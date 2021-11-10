@@ -1,3 +1,64 @@
+# Installation of Piramid
+
+Updates by: Dave W. Wright
+Date: 10 NOvember 2021
+
+## Installation on Ubuntu 20.04
+
+### Preparation
+
+I used clean conda environment to give me somewhere safe to make new OpenBabel library files and a PATH isolated from my working environment.
+
+In the instructions below I will use `$conda_envdir` to refer to the conda directoty storing my environment (e.g. `/home/dave/miniconda3/envs/environment_name/`).
+
+I also created a source directory to store the code versions as downloaded, this will be refered to as `$src_dir`.
+
+### Install instructions
+
+Move into a suitable directory for code download - `cd $src_dir`.
+
+Download version 2.4.x of OpenBabel:
+```
+git clone git@github.com:openbabel/openbabel.git
+cd openbabel
+git fetch --all --tags
+git checkout origin/openbabel-2-4-x
+```
+
+Build OpenBabel and install in a suitable location:
+```
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=$conda_envdir
+make
+make install
+```
+Note: For speed you can use the `-j N` flag to make where `N` is the number of cores to use in compilation.
+
+Move back to source directory and download Piramid:
+
+```
+cd $src_dir
+git clone git@github.com:kuano-ai/piramid.git
+cd piramid
+```
+
+Compile:
+```
+cmake CMakeLists.txt
+make
+```
+
+Note: `make install` does not make a viable version it cannot find the OpenBabel library.
+
+"Install" - in this case make a symlink in the PATH:
+
+```
+ln -s $src_dir/piramid/piramid $conda_envdir/bin
+```
+
+## Original installation instructions
+
 INTRODUCTION AND REQUIREMENTS
 
 The following tools are required to compile PIRAMID:
