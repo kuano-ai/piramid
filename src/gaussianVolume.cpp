@@ -280,7 +280,7 @@ listAtomVolumes(OpenBabel::OBMol& mol, GaussianVolume& gv)
 				gv.childOverlaps.push_back(vec);
 				
 				// Update local variables
-				parents.push_back(std::make_pair<unsigned int,unsigned int>(i, *setIter));
+				parents.push_back(std::make_pair<unsigned int &,const unsigned int &>(i, *setIter));
 				std::set<unsigned int> * tmp = new std::set<unsigned int>();
 				overlaps.push_back(tmp);
 				
@@ -487,7 +487,7 @@ atomOverlap(GaussianVolume& gRef, GaussianVolume& gDb)
          {
 				for (it1 = d2->begin(); it1 != d2->end(); ++it1)
             {
-					processQueue.push(std::make_pair<unsigned int, unsigned int>(i, *it1));
+					processQueue.push(std::make_pair<unsigned int &, unsigned int &>(i, *it1));
 				}
 			}
 			// Second add (child(i,j))
@@ -496,7 +496,7 @@ atomOverlap(GaussianVolume& gRef, GaussianVolume& gDb)
 				for (it1 = d1->begin(); it1 != d1->end(); ++it1)
             {
 					// add (child(i),j)
-					processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+					processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
 				}
 			}
 		}
@@ -551,7 +551,7 @@ atomOverlap(GaussianVolume& gRef, GaussianVolume& gDb)
 			for (it1 = d1->begin(); it1 != d1->end(); ++it1)
          {
 				// Add (child(i),j)
-				processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+				processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
 			}
 		}
       else
@@ -561,7 +561,7 @@ atomOverlap(GaussianVolume& gRef, GaussianVolume& gDb)
          {
 				for (it1 = d2->begin(); it1 != d2->end(); ++it1)
             {
-					processQueue.push(std::make_pair<unsigned int, unsigned int>(i, *it1));
+					processQueue.push(std::make_pair<unsigned int &, unsigned int &>(i, *it1));
 				}
 			}
 			if (d1 != NULL && gDb.gaussians[j].nbr - gRef.gaussians[i].nbr < 2 )
@@ -569,7 +569,7 @@ atomOverlap(GaussianVolume& gRef, GaussianVolume& gDb)
 				for (it1 = d1->begin(); it1 != d1->end(); ++it1)
             {
 					// add (child(i),j)
-					processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+					processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
 				}
 			}
 		}

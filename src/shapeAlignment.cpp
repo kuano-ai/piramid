@@ -186,7 +186,7 @@ ShapeAlignment::gradientAscent(SiMath::Vector rotor)
             {
 					for ( it1 = d2->begin(); it1 != d2->end(); ++it1 )
                {
-						processQueue.push(std::make_pair<unsigned int, unsigned int>(i, *it1));
+						processQueue.push(std::make_pair<unsigned int &, unsigned int &>(i, *it1));
 					}
 				}
             
@@ -195,7 +195,7 @@ ShapeAlignment::gradientAscent(SiMath::Vector rotor)
             {
 					for ( it1 = d1->begin(); it1 != d1->end(); ++it1 )
                {
-						processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+						processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
 					}
 				}
 			}
@@ -272,7 +272,7 @@ ShapeAlignment::gradientAscent(SiMath::Vector rotor)
             for ( it1 = d1->begin(); it1 != d1->end(); ++it1 )
             {
                // add (child(i),j)
-               processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+               processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
             }
          }
          else
@@ -282,7 +282,7 @@ ShapeAlignment::gradientAscent(SiMath::Vector rotor)
             {
                for ( it1 = d2->begin(); it1 != d2->end(); ++it1 )
                {
-                  processQueue.push(std::make_pair<unsigned int, unsigned int>(i, *it1));
+                  processQueue.push(std::make_pair<unsigned int &, unsigned int &>(i, *it1));
                }
             }
             if ( d1 != NULL && _gDb->gaussians[j].nbr - _gRef->gaussians[i].nbr < 2 )
@@ -290,7 +290,7 @@ ShapeAlignment::gradientAscent(SiMath::Vector rotor)
                for ( it1 = d1->begin(); it1 != d1->end(); ++it1 )
                {
                   // add (child(i),j)
-                  processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+                  processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
                }
             }
          }
@@ -462,7 +462,7 @@ ShapeAlignment::simulatedAnnealing(SiMath::Vector rotor)
             {
 					for ( it1 = d2->begin(); it1 != d2->end(); ++it1 )
                {
-						processQueue.push(std::make_pair<unsigned int, unsigned int>(i, *it1));
+						processQueue.push(std::make_pair<unsigned int &, unsigned int &>(i, *it1));
 					}
 				}
 				// second add (child(i),j)
@@ -470,7 +470,7 @@ ShapeAlignment::simulatedAnnealing(SiMath::Vector rotor)
             {
 					for ( it1 = d1->begin(); it1 != d1->end(); ++it1 )
                {
-						processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+						processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
 					}
 				}
 			}
@@ -525,7 +525,7 @@ ShapeAlignment::simulatedAnnealing(SiMath::Vector rotor)
 				for ( it1 = d1->begin(); it1 != d1->end(); ++it1 )
             {
 					// add (child(i),j)
-					processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+					processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
 				}
 			}
          else
@@ -535,7 +535,7 @@ ShapeAlignment::simulatedAnnealing(SiMath::Vector rotor)
             {
 					for ( it1 = d2->begin(); it1 != d2->end(); ++it1 )
                {
-						processQueue.push(std::make_pair<unsigned int, unsigned int>(i, *it1));
+						processQueue.push(std::make_pair<unsigned int &, unsigned int &>(i, *it1));
 					}
 				}
 				if ( d1 != NULL && _gDb->gaussians[j].nbr - _gRef->gaussians[i].nbr < 2 ) 
@@ -543,7 +543,7 @@ ShapeAlignment::simulatedAnnealing(SiMath::Vector rotor)
 					for ( it1 = d1->begin(); it1 != d1->end(); ++it1 )
                {
 						// add (child(i),j)
-						processQueue.push(std::make_pair<unsigned int, unsigned int>(*it1, j));
+						processQueue.push(std::make_pair<unsigned int &, unsigned int &>(*it1, j));
 					}
 				}
 			}
