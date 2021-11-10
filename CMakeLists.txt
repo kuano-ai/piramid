@@ -36,7 +36,7 @@ set (sources     ${PiramidDir}/main.cpp
 
 # Include files from piramid project
 include_directories(${PROJECT_SOURCE_DIR}/include)
-include_directories(${OPENBABEL2_INCLUDE_DIR})
+include_directories(${OPENBABEL2_INCLUDE_DIR}/openbabel-2.0)
 
 # Executables
 add_executable(${PROJECT_NAME} ${sources})
