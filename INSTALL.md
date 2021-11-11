@@ -9,7 +9,8 @@ Date: 10 NOvember 2021
 
 I used clean conda environment to give me somewhere safe to make new OpenBabel library files and a PATH isolated from my working environment.
 
-In the instructions below I will use `$conda_envdir` to refer to the conda directoty storing my environment (e.g. `/home/dave/miniconda3/envs/environment_name/`).
+In the instructions below I will use the `$CONDA_PREFIX` environment varieable to refer to the conda directoty storing used for this install environment (e.g. `/home/dave/miniconda3/envs/environment_name/`).
+This is set when you activate the relevant environment in conda.
 
 I also created a source directory to store the code versions as downloaded, this will be refered to as `$src_dir`.
 
@@ -29,7 +30,7 @@ Build OpenBabel and install in a suitable location:
 ```
 mkdir build
 cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=$conda_envdir
+cmake .. -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX
 make
 make install
 ```
@@ -54,7 +55,7 @@ Note: `make install` does not make a viable version it cannot find the OpenBabel
 "Install" - in this case make a symlink in the PATH:
 
 ```
-ln -s $src_dir/piramid/piramid $conda_envdir/bin
+ln -s $src_dir/piramid/piramid $CONDA_PREFIX/bin
 ```
 
 ## Original installation instructions
